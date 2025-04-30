@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soporte</title>
+    <link rel="stylesheet" href="styles1.css">
+    <link rel="stylesheet" href="stylesso.css">
+</head>
+
+<body>
+    <header>
+        <div class="container-header">
+            <a href="index.html" class="logo">CESDE</a>
+            <nav>
+                <ul>
+                    <li><a href="inicioSesion.html#login">Inicio de sesión</a></li>
+                    <li><a href="soporte.html#support">Soporte</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container-form">
+        <form id="soporteForm">
+            <h2>Accede al Soporte</h2>
+            <div class="input-group">
+                <i class="fas fa-id-card"></i>
+                <input type="text" id="usuario" name="usuario" placeholder="Usuario o cédula" required>
+              </div>
+          
+              <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="text" id="contacto" name="contacto" placeholder="Correo o celular" required>
+              </div>
+
+            <button type="submit">Ingresar al Chatbot</button>
+        </form>
+    </div>
+
+    <div id="chatbot" style="display: none;">
+        <h2>Asistente Virtual</h2>
+        <p>¿En qué podemos ayudarte hoy?</p>
+        <!-- Aquí puedes conectar un chatbot real más adelante -->
+        <button onclick="redirigirWhatsapp()">Hablar con Soporte por WhatsApp</button>
+    </div>
+
+    <script>
+        document.getElementById('soporteForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            document.querySelector('.container-form').style.display = 'none';
+            document.getElementById('chatbot').style.display = 'block';
+        });
+
+        function redirigirWhatsapp() {
+            window.open('https://wa.me/573001112233', '_blank');
+        }
+    </script>
+
+</body>
+
+</html>
