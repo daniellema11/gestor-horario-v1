@@ -1,0 +1,200 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+header {
+    background-color: #e3287a;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header .icons {
+    display: flex;
+    gap: 60px;
+}
+
+.icons i {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+.sidebar {
+    width: 250px;
+    background: #ebebeb;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+    background-color: #e3287a;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.sidebar label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+.sidebar input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.sidebar button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.sidebar .guardar {
+    background-color: #e3287a;
+    color: white;
+}
+
+.sidebar .modificar,
+.sidebar .eliminar {
+    background-color: #333;
+    color: white;
+}
+
+#calendario {
+    width: 60%;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-height: 600px;
+}
+
+.event-list {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.event-card {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.event-card .date {
+    font-weight: bold;
+    font-size: 16px;
+    text-align: right;
+}
+
+.calendario-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-size: 20px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+input#calendario {
+    padding: 12px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 250px;
+}
+
+#calendario {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.event-list {
+    width: 30%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-left: 1px solid #ddd;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.event-list h2 {
+    font-size: 20px;
+    margin-top: 0;
+}
+
+.event-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2f2e2e;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+}
+
+.event-info p {
+    margin: 2px 0;
+    font-size: 13px;
+}
+
+.event-date {
+    text-align: right;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.event-date strong {
+    display: block;
+    font-size: 22px;
+    line-height: 1;
+}
+
+.event-date span {
+    font-size: 14px;
+    text-transform: capitalize;
+}
