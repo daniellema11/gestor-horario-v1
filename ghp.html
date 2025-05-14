@@ -9,19 +9,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="css/stylesGes.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    .fc-daygrid-event .fc-event-title {
-      white-space: normal !important;
-    }
-  
-    .fc-event-title {
-      font-size: 0.9rem;
-    }
-  
-    .fc-daygrid-dot-event {
-      display: block !important;
-    }
-  </style>
 </head>
 
 <body>
@@ -38,184 +25,55 @@
     </div>
   </header>
 
+  <div class="overlay" id="overlay" onclick="cerrarPopup()"></div>
+
   <div class="container">
-    <div class="sidebar">
+    <div class="sidebar" id="formPopup">
       <h3>Agregar o Modificar Horarios</h3>
-      <!-- Inputs para crear/modificar eventos -->
+      <input type="hidden" id="eventoId">
+
       <label for="materia">Materia:</label>
       <input type="text" id="materia">
 
       <label for="fecha">Fecha:</label>
       <input type="date" id="fecha">
 
-      <label for="hora">Hora:</label>
-      <input type="time" id="hora">
+      <label for="horaInicio">Hora Inicio:</label>
+      <input type="time" id="horaInicio">
 
-      <label for="aula">Aula:</label>
-      <input type="text" id="aula">
+      <label for="horaFin">Hora Fin:</label>
+      <input type="time" id="horaFin">
 
-      <!-- Botones de acción -->
+      <label for="instituto">Instituto:</label>
+      <input type="text" id="instituto">
+
+      <label for="recurrencia">Días de recurrencia:</label>
+      <div id="recurrencia">
+        <label><input type="checkbox" value="1"> Lunes</label>
+        <label><input type="checkbox" value="2"> Martes</label>
+        <label><input type="checkbox" value="3"> Miércoles</label>
+        <label><input type="checkbox" value="4"> Jueves</label>
+        <label><input type="checkbox" value="5"> Viernes</label>
+        <label><input type="checkbox" value="6"> Sábado</label>
+        <label><input type="checkbox" value="0"> Domingo</label>
+      </div>
+
+      <label for="fechaFin">Fecha de finalización:</label>
+      <input type="date" id="fechaFin">
+
       <button class="guardar" onclick="agregarEvento()">GUARDAR</button>
       <button class="modificar" onclick="modificarEvento()">MODIFICAR</button>
       <button class="eliminar" onclick="eliminarEvento()">ELIMINAR</button>
-
-      </div>
+    </div>
 
     <div id="calendario"></div>
-
-    <div class="event-list" id="eventList">
-    </div>
+    <div class="event-list" id="eventList"></div>
+    <div id="toast" class="toast hide"></div>
   </div>
 
-  <!-- Script de FullCalendar -->
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const calendarEl = document.getElementById('calendario');
-      const eventListEl = document.getElementById('eventList');
+  <script src="js/gestorHorarios.js"></script>
 
-      let misEventos = JSON.parse(localStorage.getItem('misEventos')) || [
-        { id: '1', title: 'Clase introducción', start: '2025-05-06', aula: '503', hora: '14:15' },
-        { id: '2', title: 'Clase metodologias', start: '2025-05-07', aula: '503', hora: '14:15' },
-        { id: '3', title: 'Clase logica', start: '2025-05-09', aula: '503', hora: '14:15' }
-      ];
-
-      const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        locale: 'es',
-        timeZone: 'local',
-        height: '100vh',
-        headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay'
-        },
-        events: misEventos,
-        eventClick: function (info) {
-          const evento = info.event;
-          document.getElementById('materia').value = evento.title;
-          document.getElementById('fecha').value = evento.startStr;
-          document.getElementById('hora').value = evento.extendedProps.hora || '';
-          document.getElementById('aula').value = evento.extendedProps.aula || '';
-        }
-      });
-
-      calendar.render();
-
-      function guardarEventosLocal() {
-        localStorage.setItem('misEventos', JSON.stringify(misEventos));
-      }
-
-      window.agregarEvento = function () {
-        const materia = document.getElementById('materia').value;
-        const fecha = document.getElementById('fecha').value;
-        const hora = document.getElementById('hora').value;
-        const aula = document.getElementById('aula').value;
-
-        if (!materia || !fecha) return;
-
-        const existe = misEventos.some(ev => ev.title === materia && ev.start === fecha);
-        if (existe) {
-          alert('Este evento ya existe.');
-          return;
-        }
-
-        const nuevo = {
-          id: String(Date.now()),
-          title: materia,
-          start: fecha,
-          hora: hora,
-          aula: aula
-        };
-
-        misEventos.push(nuevo);
-        calendar.addEvent(nuevo);
-        mostrarEventos(misEventos);
-        guardarEventosLocal();
-      };
-
-      window.modificarEvento = function () {
-        const materia = document.getElementById('materia').value;
-        const fecha = document.getElementById('fecha').value;
-        const hora = document.getElementById('hora').value;
-        const aula = document.getElementById('aula').value;
-
-        const evento = calendar.getEvents().find(ev => ev.title === materia);
-        if (evento) {
-          evento.setStart(fecha);
-          evento.setExtendedProp('hora', hora);
-          evento.setExtendedProp('aula', aula);
-
-          const index = misEventos.findIndex(ev => ev.title === materia);
-          if (index !== -1) {
-            misEventos[index].start = fecha;
-            misEventos[index].hora = hora;
-            misEventos[index].aula = aula;
-          }
-
-          mostrarEventos(misEventos);
-          guardarEventosLocal();
-        }
-      };
-
-      window.eliminarEvento = function () {
-        const materia = document.getElementById('materia').value;
-        const evento = calendar.getEvents().find(ev => ev.title === materia);
-        if (evento) {
-          evento.remove();
-          misEventos = misEventos.filter(ev => ev.title !== materia);
-          mostrarEventos(misEventos);
-          guardarEventosLocal();
-        }
-      };
-
-      function mostrarEventos(eventos) {
-        const hoy = new Date();
-        const eventosFuturos = eventos.filter(ev => new Date(ev.start) >= hoy)
-          .sort((a, b) => new Date(a.start) - new Date(b.start));
-
-        eventListEl.innerHTML = "<h2>Próximos Eventos</h2>";
-
-        eventosFuturos.forEach(ev => {
-          const item = document.createElement('div');
-          item.className = 'event-card';
-
-          const fecha = new Date(ev.start + 'T00:00:00');
-          const dia = fecha.getDate();
-          const mes = fecha.toLocaleString('es-ES', { month: 'long' });
-
-          item.innerHTML = `
-            <div class="event-info">
-              <h3>${ev.title}</h3>
-              <p>Aula: ${ev.aula || ''}</p>
-              <p>Hora: ${ev.hora || ''}</p>
-            </div>
-            <div class="event-date">
-              <strong>${dia}</strong>
-              <span>${mes}</span>
-            </div>
-          `;
-
-          eventListEl.appendChild(item);
-        });
-      }
-
-      window.filtrarEventos = function () {
-        const filtroMateria = document.getElementById('filtroMateria').value.toLowerCase();
-        const filtroMes = document.getElementById('filtroMes').value;
-
-        const filtrados = misEventos.filter(ev => {
-          const cumpleMateria = ev.title.toLowerCase().includes(filtroMateria);
-          const cumpleMes = !filtroMes || (new Date(ev.start).getMonth() + 1).toString().padStart(2, '0') === filtroMes;
-          return cumpleMateria && cumpleMes;
-        });
-
-        mostrarEventos(filtrados);
-      };
-
-      mostrarEventos(misEventos);
-    });
-  </script>
 </body>
 
 </html>
