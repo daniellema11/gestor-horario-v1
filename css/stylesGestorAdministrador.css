@@ -1,0 +1,227 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #EBEBEB;
+}
+
+header {
+    background-color: #E91E75;
+    color: white;
+}
+
+header h2 {
+  margin-top: 10px; /* Puedes aumentar este valor para bajarlo más */
+  padding-top: 2px; /* Ajusta el valor según lo necesites */
+}
+
+
+.bg-pink {
+    background-color: #E91E75 !important;
+}
+
+.btn-pink {
+    background-color: #E91E75;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-pink:hover {
+    background-color: #c2185b;
+    color: white;
+}
+
+.form-container {
+    background-color: #f5f5f5;
+}
+
+.lista-profesores {
+    background-color: transparent;
+}
+
+.lista-profesores-header {
+    background-color: #433F3F;
+    color: white;
+    padding: 8px 12px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lista-profesores-body {
+    background-color: #f5f5f5;
+    padding: 12px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.lista-profesores-body button {
+    background-color: white;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 8px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    color: #433F3F;
+    font-weight: 500;
+}
+
+.lista-profesores-body button:hover {
+    background-color: #E91E75;
+    color: white;
+}
+
+#calendario {
+    min-height: 600px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #ccc;
+}
+
+/* Botones del calendario */
+.fc .fc-button {
+    background-color: #E0E0E0;
+    border: none;
+    color: #433F3F;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 5px 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+.fc .fc-button:hover {
+    background-color: #433F3F;
+    color: white;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:not(:disabled):active {
+    background-color: #E91E75;
+    color: white;
+    box-shadow: none;
+}
+
+.fc .fc-button-primary:focus {
+    box-shadow: none;
+}
+
+/* Días del calendario */
+.fc .fc-daygrid-day-number {
+    color: #433F3F;
+    font-weight: bold;
+}
+
+.fc-col-header-cell-cushion {
+    color: #433F3F;
+    font-weight: bold;
+}
+
+/* Eventos */
+.fc-event {
+    border-color: #433F3F;
+    background-color: #433F3F;
+}
+
+.fc-event-title {
+    color: white;
+}
+
+
+
+/* Modal de crear profesor */
+.modal-body .form-label {
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.modal-body .form-control::placeholder {
+    font-style: italic;
+    color: #aaa;
+}
+
+.modal-body .form-control {
+    border-left: 6px solid #E91E75;
+    border-radius: 8px;
+    padding-left: 12px;
+    box-shadow: none;
+}
+
+.modal-body .form-control:focus {
+    border-color: #E91E75;
+    box-shadow: 0 0 0 0.1rem rgba(233, 30, 117, 0.25);
+}
+
+.modal-content {
+    background-color: #F2F2F2;
+}
+
+.modal-titulo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #000;
+}
+
+/* Alerta éxito */
+.alert-success {
+    background-color: #E91E75;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    box-shadow: 0 0 10px rgba(233, 30, 117, 0.2);
+}
+
+/* Profesores lista */
+.profesor-item {
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.profesor-item:hover {
+    background-color: #E91E75;
+    color: white;
+}
+
+#alerta-clase,
+#alerta-exito,
+#alerta-aula {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background-color: #E91E75;
+  color: white;
+  font-weight: 500;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  display: none;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+
+.dia-btn.active {
+  background-color: #E91E75;
+  color: white;
+  border-color: #E91E75;
+  font-weight: bold;
+}
+
+
+.dropdown-menu {
+  min-width: 220px;
+  font-size: 14px;
+}
+
+
