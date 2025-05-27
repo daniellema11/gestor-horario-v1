@@ -40,6 +40,10 @@ header .icons {
   position: relative;
 }
 
+.notificacion-icon{
+ color: white;
+}
+
 /* Popup centrado */
 .sidebar {
   display: none;
