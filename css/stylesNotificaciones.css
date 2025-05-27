@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: white;
+}
+
+header {
+  background-color: #e3287a;
+  color: white;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 10px 20px;
+}
+
+header .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+header .icons {
+  display: flex;
+  gap: 60px;
+}
+
+.icons i {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+  position: relative;
+}
+
+.notification-icon {
+  position: relative;
+  display: inline-block;
+  color: white; 
+  text-decoration: none;
+}
+
+
+.notificaciones {
+  background-color: #a3a0a1;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  font-size: 16px;
+  width: 90%;
+  margin: 30px auto;
+  padding: 25px 30px;
+}
